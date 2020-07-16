@@ -1,27 +1,66 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div v-if="!isStarted">
+      <h1>MemoCard</h1>
+      <h2>A memory game with vue.js</h2>
+      <Button @click.native="isStarted = !isStarted">play game</Button>
+    </div>
+    <div v-else>
+      <Game />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Button from './components/button.vue'
+import Game from './components/game/root.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Button,
+    Game
+  },
+  data () {
+    return {
+      isStarted: false
+    }
   }
 }
 </script>
 
 <style lang="stylus">
+:root {
+  --color-base: #0f1923;
+  --color-red: #ff4655;
+}
+
+* {
+  box-sizing border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display flex;
+  justify-content center;
+  align-items center;
+  flex-direction column;
+  background: var(--color-base);
+  color: white;
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
 #app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
+  font-family: 'Raleway', sans-serif;
   text-align center
-  color #2c3e50
-  margin-top 60px
+  margin-top: 60px;
+  margin-bottom: 60px;
 </style>
