@@ -1,5 +1,10 @@
-import randomFromArray from './randomFromArray'
+import shuffleUtil from './shuffle'
+import duplicateUtil from './duplicate'
 
 export default {
-  randomFromArray
+  shuffle: shuffleUtil,
+  duplicate: duplicateUtil
 }
+
+export const shuffle = shuffleUtil
+export const duplicate = duplicateUtil

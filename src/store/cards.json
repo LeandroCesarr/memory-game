@@ -1,0 +1,11 @@
+{
+  "cards": [
+    { "name": "CSS3", "slug": "css3" },
+    { "name": "HTML5", "slug": "html5" },
+    { "name": "PHP", "slug": "php" },
+    { "name": "VUE", "slug": "vue" },
+    { "name": "REACT", "slug": "react" },
+    { "name": "ANGULAR", "slug": "angular" },
+    { "name": "NUXT", "slug": "nuxt" }
+  ]
+}

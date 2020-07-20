@@ -1,31 +1,23 @@
 <template>
   <div>
     <p>game</p>
-    <ul>
-      <li v-for="item in sortedCards" :key="item">
-        {{ item }}
-      </li>
-    </ul>
+    <cardGrid />
   </div>
 </template>
 
 <script>
-import { randomFromArray } from '@/utils'
+import cardGrid from '@/components/game/card-grid.vue'
 
 export default {
+  components: {
+    cardGrid
+  },
   data () {
-    return {
-      cards: ['css', 'sass', 'jquery', 'vue', 'react', 'php']
-    }
+    return {}
   },
   computed: {
-    sortedCards () {
-      const duplicateCards = [...this.cards, ...this.cards]
-      return duplicateCards.map(item => (duplicateCards[randomFromArray(duplicateCards)]))
-    }
   },
   methods: {
-
   }
 }
 </script>
