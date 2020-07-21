@@ -1,20 +1,26 @@
 <template>
-  <div class="m-card" @click="isOpen = !isOpen" :class="{ '-active': isOpen }">
+  <div class="m-card" :class="{ '-active': cardInfo.flip }">
     <div class="m-card_side -front">
       <img src="@/assets/valorant.png" alt="">
     </div>
     <div class="m-card_side -back">
-      <p>{{ card.name }}</p>
+      <p>{{ cardInfo.name }}</p>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: { card: Object },
   data () {
-    return {
-      isOpen: false
+    return {}
+  },
+  computed: {
+    ...mapGetters(['getCard']),
+    cardInfo () {
+      return this.getCard(this.card.slug)
     }
   }
 }

@@ -1,13 +1,16 @@
 <template>
-  <ul class="m-grid-card">
-    <li v-for="(item, idx) in cards" :key="idx">
-      <card :card="item" />
-    </li>
-  </ul>
+  <div>
+    <p>points: {{ points }}</p>
+    <ul class="m-grid-card">
+      <li v-for="(item, idx) in cards" :key="idx">
+        <card @click.native="flip(item)" :card="item" />
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import card from '@/components/game/card.vue'
 
 export default {
@@ -15,7 +18,13 @@ export default {
     card
   },
   computed: {
-    ...mapGetters(['cards'])
+    ...mapGetters(['cards', 'points'])
+  },
+  methods: {
+    ...mapActions(['move']),
+    flip (card) {
+      this.move(card)
+    }
   }
 }
 </script>
