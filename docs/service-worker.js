@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.d4ba183e645b92923ee9233befe25c00.js"
+  "precache-manifest.0d011443de8a1859b10b9b361a6a6033.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "memory-game"});

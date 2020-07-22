@@ -6,6 +6,8 @@
     { "name": "VUE", "slug": "vue" },
     { "name": "REACT", "slug": "react" },
     { "name": "ANGULAR", "slug": "angular" },
-    { "name": "NUXT", "slug": "nuxt" }
+    { "name": "NUXT", "slug": "nuxt" },
+    { "name": "LARAVEL", "slug": "laravel" },
+    { "name": "FIREBASE", "slug": "firebase" }
   ]
 }

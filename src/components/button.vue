@@ -22,7 +22,7 @@ export default {
   padding: 8px;
   font-size: 0.8rem;
   font-weight: 900;
-  color: #ff4655;
+  color: var(--color-red);
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
@@ -60,8 +60,7 @@ export default {
     width: calc(100% + 36px);
     height: 100%;
     z-index: -1;
-    -webkit-transition: 0.3s ease-out all;
-    transition: 0.3s ease-out all;
+    transition: transform 0.3s ease-out;
     transform: skewX(-10deg) translateX(-101%);
   }
 }

@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <p>points: {{ points }}</p>
-    <ul class="m-grid-card">
+  <div class="m-grid-card">
+    <h2 class="m-grid-card_title">Cards</h2>
+    <ul class="m-grid-card_cards">
       <li v-for="(item, idx) in cards" :key="idx">
         <card @click.native="flip(item)" :card="item" />
       </li>
@@ -18,7 +18,7 @@ export default {
     card
   },
   computed: {
-    ...mapGetters(['cards', 'points'])
+    ...mapGetters(['cards'])
   },
   methods: {
     ...mapActions(['move']),
@@ -30,12 +30,17 @@ export default {
 </script>
 
 <style lang="stylus">
-  .m-grid-card {
+  .m-grid-card_title {
+    margin-top: 0;
+    margin-bottom: var(--gutter-base);
+  }
+
+  .m-grid-card_cards {
     list-style: none;
     padding-left: 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 10px;
-    row-gap: 10px;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: var(--gutter-base);
+    row-gap: var(--gutter-base);
   }
 </style>

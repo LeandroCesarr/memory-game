@@ -7,18 +7,31 @@ Vue.use(Vuex)
 
 const getResult = (arr) => (arr[0].name === arr[1].name)
 
-const state = {
-  cards: duplicate(cards.map(card => ({ ...card, flip: false, valid: false }))),
+const getDefaultData = () => ({
+  cards: duplicate(cards.map(card => ({
+    ...card,
+    flip: false,
+    valid: false,
+    error: false
+  }))),
   points: 0,
-  node: process.env.NODE_ENV
-}
+  plays: 0
+})
+
+const getDefaultState = () => ({
+  ...getDefaultData(),
+  node: 'development',
+  page: 'start'
+})
 
 const getters = {
   cards: (state) => shuffle(state.cards),
   node: (state) => state.node,
   getCard: (state) => (cardSlug) => state.cards.find(card => card.slug === cardSlug),
   flippedCards: (state) => state.cards.filter(card => card.flip && !card.valid),
-  points: (state) => state.points
+  points: (state) => state.points,
+  plays: (state) => state.plays,
+  page: (state) => state.page
 }
 
 const mutations = {
@@ -40,22 +53,42 @@ const mutations = {
   },
   incrementPoints (state) {
     state.points += 1
+  },
+  incrementPlays (state) {
+    state.plays += 1
+  },
+  changeErrorCard (state, card) {
+    const foundCard = state.cards.find((cd) => cd.slug === card.slug)
+    foundCard.error = !foundCard.error
+  },
+  changePage (state, page) {
+    state.page = page
+  },
+  reset (state) {
+    const s = getDefaultState()
+    Object.keys(s).forEach((key) => { state[key] = s[key] })
+  },
+  resetData (state) {
+    const s = getDefaultData()
+    Object.keys(s).forEach((key) => { state[key] = s[key] })
   }
 }
 
 const actions = {
-  move ({ commit, getters }, card) {
+  move ({ commit, getters, dispatch }, card) {
     let activeCards = getters.flippedCards
 
     if (activeCards.length === 2) {
-      alert('irregular movement')
+      dispatch('irregularMovement', card)
     } else if (activeCards.length === 1 && activeCards[0].slug === card.slug) {
-      alert('irregular movement')
+      dispatch('irregularMovement', card)
     } else {
       commit('flipCards', [card])
       activeCards = getters.flippedCards
       setTimeout(() => {
         if (activeCards.length === 2) {
+          commit('incrementPlays')
+
           if (getResult(activeCards)) {
             commit('incrementPoints')
             commit('validateCards', activeCards)
@@ -65,11 +98,18 @@ const actions = {
         }
       }, 600)
     }
+  },
+  irregularMovement ({ commit }, card) {
+    commit('changeErrorCard', card)
+
+    setTimeout(() => {
+      commit('changeErrorCard', card)
+    }, 2000)
   }
 }
 
 export default new Vuex.Store({
-  state,
+  state: getDefaultState(),
   getters,
   mutations,
   actions

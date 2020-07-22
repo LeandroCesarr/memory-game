@@ -1,32 +1,21 @@
 <template>
   <div id="app">
-    <div v-if="!isStarted">
-      <h1>MemoCard</h1>
-      <h2>A memory game with vue.js</h2>
-      <Button @click.native="isStarted = !isStarted">play game</Button>
-      <p>status: {{ node }}</p>
-    </div>
-    <div v-else>
+
+    <div>
       <Game />
+      <p class="status">status: {{ node }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import Button from './components/button.vue'
 import Game from './components/game/root.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    Button,
     Game
-  },
-  data () {
-    return {
-      isStarted: false
-    }
   },
   computed: {
     ...mapGetters(['node'])
@@ -38,14 +27,24 @@ export default {
 :root {
   --color-base: #0f1923;
   --color-red: #ff4655;
+  --gutter-base: 10px;
 }
 
 * {
   box-sizing border-box;
 }
 
+html {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  flex: 1;
+}
+
 html, body {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -65,7 +64,12 @@ h1, h2 {
 
 #app
   font-family: 'Raleway', sans-serif;
-  text-align center
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+.status {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
 </style>
