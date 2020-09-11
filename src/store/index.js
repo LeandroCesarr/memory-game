@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import pageEnum from '@/enums/page'
 import { cards } from './cards.json'
 import { shuffle, duplicate } from '@/utils/index'
 
@@ -15,13 +16,15 @@ const getDefaultData = () => ({
     error: false
   }))),
   points: 0,
-  plays: 0
+  plays: 0,
+  time: 60,
+  timer: null
 })
 
 const getDefaultState = () => ({
   ...getDefaultData(),
   node: 'development',
-  page: 'start'
+  page: pageEnum.START
 })
 
 const getters = {
@@ -31,7 +34,9 @@ const getters = {
   flippedCards: (state) => state.cards.filter(card => card.flip && !card.valid),
   points: (state) => state.points,
   plays: (state) => state.plays,
-  page: (state) => state.page
+  page: (state) => state.page,
+  time: (state) => state.time,
+  timer: (state) => state.timer
 }
 
 const mutations = {
@@ -57,6 +62,18 @@ const mutations = {
   incrementPlays (state) {
     state.plays += 1
   },
+  startTime (state) {
+    state.timer = setInterval(() => {
+      if (state.time > 0) {
+        state.time -= 1
+      } else {
+        clearInterval(state.timer)
+      }
+    }, 1000)
+  },
+  breakTimer (state) {
+    clearInterval(state.timer)
+  },
   changeErrorCard (state, card) {
     const foundCard = state.cards.find((cd) => cd.slug === card.slug)
     foundCard.error = !foundCard.error
@@ -65,10 +82,14 @@ const mutations = {
     state.page = page
   },
   reset (state) {
+    clearInterval(state.timer)
+
     const s = getDefaultState()
     Object.keys(s).forEach((key) => { state[key] = s[key] })
   },
   resetData (state) {
+    clearInterval(state.timer)
+
     const s = getDefaultData()
     Object.keys(s).forEach((key) => { state[key] = s[key] })
   }

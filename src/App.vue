@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-
-    <div>
-      <Game />
-      <p class="status">status: {{ node }}</p>
-    </div>
+    <Game />
+    <p class="status">status: {{ node }}</p>
   </div>
 </template>
 
@@ -64,12 +61,11 @@ h1, h2 {
 
 #app
   font-family: 'Raleway', sans-serif;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  padding: 30px;
 
 .status {
   position: absolute;
-  left: 10px;
+  left: 30px;
   bottom: 10px;
 }
 </style>

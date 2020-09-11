@@ -4,7 +4,7 @@
     <div class="m-score_items">
       <p class="m-score_item"><span>plays:</span> {{ plays }}</p>
       <p class="m-score_item"><span>points:</span> {{ points }}</p>
-      <p class="m-score_item"><span>timer:</span> 0s</p>
+      <p class="m-score_item"><span>timer:</span> {{ time }}s</p>
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(['points', 'plays'])
+    ...mapGetters(['points', 'plays', 'time'])
   }
 }
 </script>
