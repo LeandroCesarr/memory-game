@@ -42,6 +42,6 @@ You can install the application using `npm install` or `yarn install` on the roo
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](https://github.com/LeandroCesarr/memory-game/blob/master/LICENSE)**
-- Copyright 2020 © <a href="https://github.com/leoronne" target="_blank">Leonardo Ronne</a>.
+- Copyright 2020 © <a href="https://github.com/LeandroCesarr" target="_blank">Leandro Cesar</a>.
 
 ##
