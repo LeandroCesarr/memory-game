@@ -1,23 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "96aba3e2d908d40a80c3",
-    "url": "css/app.c948a2b7.css"
+    "revision": "13616ea6cfd424d646b9",
+    "url": "css/app.427e9d45.css"
+  },
+  {
+    "revision": "5f98ff2fe696720a42b30873bdc29259",
+    "url": "img/memocard-white.5f98ff2f.svg"
   },
   {
     "revision": "04e02c9baf53307c7d9fcffbb1710124",
     "url": "img/valorant.04e02c9b.png"
   },
   {
-    "revision": "bb728833d7255228a744584a49bc4c53",
+    "revision": "e37c5c9741f0fac92621db184cbff4b8",
     "url": "index.html"
   },
   {
-    "revision": "96aba3e2d908d40a80c3",
-    "url": "js/app.46e71692.js"
+    "revision": "13616ea6cfd424d646b9",
+    "url": "js/app.a41deb9d.js"
   },
   {
-    "revision": "7582a4b1f84306b53a0a",
-    "url": "js/chunk-vendors.da63e057.js"
+    "revision": "e29bf0523b301b7a35b1",
+    "url": "js/chunk-vendors.7b670f40.js"
   },
   {
     "revision": "8dc341de3428049269eec4dcdd9257f4",
